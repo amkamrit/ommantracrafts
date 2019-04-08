@@ -21,6 +21,7 @@ use App\Models\Slider;
 use App\Models\Service;
 use App\Models\Payment;
 use App\Models\Coupne;
+use App\Models\shipping_address;
 
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\AdaptivePayments;
@@ -130,12 +131,14 @@ class CartController extends Controller
     }
 
     public function getCheckout(){
+        $shipping_discount=shipping_address::all();
     	   $category=Category::all();
     		$subCategory=sub_categorie::all();
     	if (!Session::has('cart')) {
     		return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
     		 ->with('category',$category)
-    		->with('subCategory',$subCategory);
+    		->with('subCategory',$subCategory)
+            ->with('shipping_discount', $shipping_discount);
     	}
 
     	$oldcart= Session::get('cart');

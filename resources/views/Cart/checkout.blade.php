@@ -326,8 +326,14 @@
                 <input id="address" type="text"  class="form-control" placeholder="1234 Main St" aria-label="Card Holder" aria-describedby="basic-addon1" name="City" required>
               </div>
               <div class="form-group col-sm-6">
-                <label for="country">Country</label>
+                <label for="country">Address</label>
                 <input id="country" type="text" class="form-control" placeholder="Country" aria-label="Card Holder" aria-describedby="basic-addon1" name="Country" required>
+                <select name="Country" required >
+                  <option value="o" disabled>Select Country</option>
+                  @foreach($shipping_discount as $shipping_discounts)
+                  <option value="{{$shipping_discounts->price}}">{{$shipping_discounts->name}}</option>
+                  @endforach
+                </select>
               </div>
               <div class="form-group col-sm-3">
                 <label for="State">State</label>
