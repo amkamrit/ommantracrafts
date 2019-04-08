@@ -133,7 +133,7 @@ class CartController extends Controller
     	   $category=Category::all();
     		$subCategory=sub_categorie::all();
     	if (!Session::has('cart')) {
-    		return view('Cart/mycart')
+    		return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
     		 ->with('category',$category)
     		->with('subCategory',$subCategory);
     	}
@@ -141,7 +141,7 @@ class CartController extends Controller
     	$oldcart= Session::get('cart');
     	$cart= new Cart($oldcart);
     	$total=$cart->totalPrice;
-    	return view('Cart/checkout',['total' => $total])
+    	return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
 
     	->with('category',$category)
     	->with('subCategory',$subCategory);

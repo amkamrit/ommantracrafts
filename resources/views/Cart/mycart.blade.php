@@ -62,10 +62,6 @@
                                         <th class="empty" colspan="3"></th>
                                         <th>Coupne</th>
                                         <td colspan="2"><input type="text" name="coupne"></td>
-                                        <td colspan="2"><?php 
-                                        
-                                        
-                                        ?></td>
                                         <td colspan="2"><button class=" btn btn-primary">Apply</button></td>
                                     </form>
                                     </tr>

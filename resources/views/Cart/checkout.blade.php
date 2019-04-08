@@ -241,7 +241,70 @@
               <p class="item-name">Product 2</p>
               <p class="item-description">Lorem ipsum dolor sit amet</p>
             </div> -->
-            <div class="total">Total<span class="price">${{$total}}.00</span></div>
+          
+           <div class="container">
+        <section class="m50 row ">
+        <div class="col-md-12">
+                        <div class="order-summary clearfix">
+                            <div class="section-title">
+                                <h3 class="title">Order Review</h3>
+                            </div>
+                            <table class="shopping-cart-table table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>QTY</th>
+                                        <th class="text-center">Total Price</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+
+                                    @foreach($products as $product)
+                                    <?php $url=url('productImage/'.$product['item']['product_image']);  ?>
+                                    
+                                        
+                                    <tr>
+                                        <td class="thumb"><img style="height:60px;" src="{{$url}}" alt=""></td>
+                                      </td></td><td></td>
+                                        <td class="details">
+                                            <a href="#">{{$product['item']['product_name']}}</a>
+                                        </td>
+                                        
+
+                                        <td class=" text-center">{{$product['qty']}}</td>
+                                        <td class="total text-center"><strong class="primary-color">{{$product['price']}}</strong></td>
+
+                                    </tr>
+                                
+                                   
+                                 @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="empty" colspan="3"></th>
+                                        <th>SUB TOTAL</th>
+                                        <th colspan="2" class="total">${{$totalPrice}}.00</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            
+                           
+                        </div>
+
+                    </div>
+    </section>
+    </div>
+
+
+
+
+            </div>
           </div>
           <div class="card-details">
             <h3 class="title">Shipping Address</h3>
