@@ -179,7 +179,10 @@ Route::post('{id}/updateItem/',[
 	'as'    =>		'updateItem',
 ]);
 
-
+Route::post('/applyCoupne/',[
+	'uses' =>'Frontend\CartController@applyCoupne',
+	'as' =>'applyCoupne'
+]);
 
 //facebook 
 Route::get('login/facebook', 'Auth\CustomerLoginController@redirectToProvider');

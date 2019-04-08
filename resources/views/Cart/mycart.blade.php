@@ -53,16 +53,27 @@
                                         <th class="empty" colspan="3"></th>
                                         <th>SUBTOTAL</th>
                                         <th colspan="2" class="sub-total">${{$totalPrice}}.00</th>
+                                        <th></th>
                                     </tr>
                                     <tr>
+                                        <form action="{{route('applyCoupne')}}" method="post">
+                                             
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <th class="empty" colspan="3"></th>
-                                        <th>SHIPING</th>
-                                        <td colspan="2">Free Shipping</td>
+                                        <th>Coupne</th>
+                                        <td colspan="2"><input type="text" name="coupne"></td>
+                                        <td colspan="2"><?php 
+                                        
+                                        
+                                        ?></td>
+                                        <td colspan="2"><button class=" btn btn-primary">Apply</button></td>
+                                    </form>
                                     </tr>
                                     <tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>TOTAL</th>
                                         <th colspan="2" class="total">${{$totalPrice}}.00</th>
+                                        <th></th>
                                     </tr>
                                 </tfoot>
                             </table>

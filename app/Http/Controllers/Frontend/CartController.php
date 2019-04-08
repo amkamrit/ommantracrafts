@@ -20,6 +20,7 @@ use Illuminate\Database\Query\Builder;
 use App\Models\Slider;
 use App\Models\Service;
 use App\Models\Payment;
+use App\Models\Coupne;
 
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\AdaptivePayments;
@@ -359,7 +360,13 @@ class CartController extends Controller
         ->with('category',$category)
         ->with('subCategory',$subCategory);
     }
+    public function applyCoupne(Request $request){
 
+        $coupneCode= $request->coupne;
+        $coupneInfo = DB::table('coupnes')->where('name', $coupneCode)->get();
+
+        return back()->with('coupneInfo', $coupneInfo);
+}
     
     
 }
