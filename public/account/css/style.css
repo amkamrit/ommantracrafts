@@ -1,0 +1,33 @@
+h6{
+	text-align: right;
+	font-style: italic;
+}
+h3{
+	text-align: center;
+	font-size: 30px;
+}
+h4{
+	text-align: center;
+	font-size: 16px;
+	padding-top: 15px;
+	font-style: bold;
+	color: white;
+}
+h5{
+	padding-left: 30px;
+
+}
+.title{
+	background-color: #d0d5d0;
+	height:  50px;
+}
+.table{
+	padding-top: 40px;
+	border: 20px;
+}
+.navbar navbar-default{
+	padding-right: 50px;
+}
+.ledgerDisplay{
+	padding-right: 50px;
+}
