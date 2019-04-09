@@ -111,7 +111,10 @@ class CartController extends Controller
         ->with('subCategory',$subCategory);
 
     }
-    public function getCart(){
+    //Shopping Cart Click Manin Menu Cart Start Hear
+    public function getCart(Request $request){
+        $coupneCode=$request->coupne;
+        $coupneInfo = DB::table('coupnes')->where('name', $coupneCode)->get();
     	$category=Category::all();
         $subCategory=sub_categorie::all();
     	if (!Session::has('cart')) {
@@ -124,18 +127,38 @@ class CartController extends Controller
         $subCategory=sub_categorie::all();
     	$oldcart= Session::get('cart');
     	$cart= new Cart($oldcart);
-    	return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
+        $totalPrice=0;
+       
+        //Total price calculation Start hear 
+       if ($coupneInfo->isEmpty()) {
+
+           $totalPrice =$cart->totalPrice;
+       }
+       else{
+        foreach ($coupneInfo as $coupneInfos) {
+            if ($coupneInfos->status==1) {
+                if ($coupneInfos->type==1) {
+                    $totalPrice=$cart->totalPrice+$coupneInfos->price;
+                }
+                else{
+                    $totalPrice=(($cart->totalPrice*$coupneInfos->price)/100) +$cart->totalPrice;
+                }
+            }
+        }
+
+       }
+    	return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $totalPrice])
 
     ->with('category',$category)
     ->with('subCategory',$subCategory);
     }
 
-    public function getCheckout(){
+    public function getCheckout($totalPrice){
         $shipping_discount=shipping_address::all();
     	   $category=Category::all();
     		$subCategory=sub_categorie::all();
     	if (!Session::has('cart')) {
-    		return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
+    		return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $totalPrice])
     		 ->with('category',$category)
     		->with('subCategory',$subCategory)
             ->with('shipping_discount', $shipping_discount);
@@ -144,9 +167,10 @@ class CartController extends Controller
     	$oldcart= Session::get('cart');
     	$cart= new Cart($oldcart);
     	$total=$cart->totalPrice;
-    	return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
+    	return view('Cart/checkout', ['products' => $cart->items, 'totalPrice' => $totalPrice])
 
     	->with('category',$category)
+        ->with('shipping_discount', $shipping_discount)
     	->with('subCategory',$subCategory);
 
     }
@@ -366,7 +390,7 @@ class CartController extends Controller
     public function applyCoupne(Request $request){
 
         $coupneCode= $request->coupne;
-        $coupneInfos = DB::table('coupnes')->where('name', $coupneCode)->get();
+        $coupneInfo = DB::table('coupnes')->where('name', $coupneCode)->get();
 
             $category=Category::all();
         $subCategory=sub_categorie::all();

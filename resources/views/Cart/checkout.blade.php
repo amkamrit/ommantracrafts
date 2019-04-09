@@ -6,7 +6,7 @@
 @section('content')
 
 
-         <style type="text/css">
+<style type="text/css">
 	.payment-form{
 	padding-bottom: 50px;
 	font-family: 'Montserrat', sans-serif;
@@ -332,7 +332,7 @@
                   <option value="o" disabled>Select Country</option>
                   @foreach($shipping_discount as $shipping_discounts)
                   <option value="{{$shipping_discounts->price}}">{{$shipping_discounts->name}}</option>
-                  @endforach
+                  @endforeach
                 </select>
               </div>
               <div class="form-group col-sm-3">

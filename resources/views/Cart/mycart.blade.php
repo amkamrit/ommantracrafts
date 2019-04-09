@@ -56,19 +56,21 @@
                                         <th></th>
                                     </tr>
                                     <tr>
-                                        <form action="{{route('applyCoupne')}}" method="post">
+                                        <form action="{{route('shopping_cart')}}" method="post">
                                              
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <th class="empty" colspan="3"></th>
                                         <th>Coupne</th>
-                                        <td colspan="2"><input type="text" name="coupne"></td>
+                                        <td colspan="2">
+                                            <input type="text" name="coupne"></td>
                                         <td colspan="2"><button class=" btn btn-primary">Apply</button></td>
                                     </form>
                                     </tr>
                                     <tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>TOTAL</th>
-                                        <th colspan="2" class="total">${{$totalPrice}}.00
+                                        <th colspan="2" class="total">
+                                            ${{$totalPrice}}.00
                                         </th>
                                         <th></th>
                                     </tr>
@@ -76,7 +78,7 @@
                             </table>
                             <div  align="right">
                              <div class="form-group col-sm-6">
-                                <a href="{{route('checkout')}}"><img src="{{asset('images\paypal.png')}}" style="height: 50px; width: 200px;"></a>
+                                <a href="{{asset('checkout/'. $totalPrice )}}"><img src="{{asset('images\paypal.png')}}" style="height: 50px; width: 200px;"></a>
                                 <a href="{{route('checkoutM')}}"><img src="{{asset('images\mastercard.png')}}" style="width: 200px; height: 50px;"></a>
                             </div>
                             

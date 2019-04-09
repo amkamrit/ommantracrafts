@@ -142,7 +142,12 @@ Route::get('/shopping_cart',[
 	'as'    =>		'shopping_cart'
 ]);
 
-Route::get('/checkout',[
+Route::post('/shopping_cart',[
+	'uses'   =>  'Frontend\CartController@getCart',
+	'as'    =>		'shopping_cart'
+]);
+
+Route::get('/checkout/{totalPrice}',[
 	'uses'   =>  'Frontend\CartController@getCheckout',
 	'as'    =>		'checkout',
 ]);

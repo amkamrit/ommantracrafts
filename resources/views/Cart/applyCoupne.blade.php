@@ -70,8 +70,11 @@
                                         <th>TOTAL</th>
                                         <th colspan="2" class="total">
                                            @if($coupneInfo->isEmpty()) 
-                                        <h6 style="color: black; font-size: 10px;">{{'Invalite Coupne'}}<h6><br>
-                                           ${{$totalPrice}}.00 
+                                           <?php $priceBeforeShipping=0 ?>
+                                        <h6 style="color: black; font-size: 10px;">
+                                            {{'Invalite Coupne'}}<h6><br>
+                                                <?php $priceBeforeShipping= $totalPrice ?>
+                                           ${{$priceBeforeShipping}}.00 
 
                                            @else
                                            
@@ -80,12 +83,15 @@
                                         @if($coupneInfos->status==1)
 
                                         @if($coupneInfos->type==1)
+                                        <?php $priceBeforeShipping = $totalPrice+$coupneInfos->price ?>
 
-                                        ${{$totalPrice+$coupneInfos->price}}.00
+                                        ${{$priceBeforeShipping}}.00
 
                                         @else
-                                        
-                                        ${{($totalPrice*$coupneInfos->price)/100 +$totalPrice}}.00
+
+                                        <?php $priceBeforeShipping=($totalPrice*$coupneInfos->price)/100 +$totalPrice ?>
+
+                                        ${{$priceBeforeShipping}}.00
 
                                         @endif
 
@@ -100,7 +106,7 @@
                             </table>
                             <div  align="right">
                              <div class="form-group col-sm-6">
-                                <a href="{{route('checkout')}}"><img src="{{asset('images\paypal.png')}}" style="height: 50px; width: 200px;"></a>
+                                <a href="{{asset('checkout/' . $priceBeforeShipping)}}"><img src="{{asset('images\paypal.png')}}" style="height: 50px; width: 200px;"></a>
                                 <a href="{{route('checkoutM')}}"><img src="{{asset('images\mastercard.png')}}" style="width: 200px; height: 50px;"></a>
                             </div>
                             
