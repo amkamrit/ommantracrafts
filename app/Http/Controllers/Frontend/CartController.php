@@ -366,9 +366,25 @@ class CartController extends Controller
     public function applyCoupne(Request $request){
 
         $coupneCode= $request->coupne;
-        $coupneInfo = DB::table('coupnes')->where('name', $coupneCode)->get();
+        $coupneInfos = DB::table('coupnes')->where('name', $coupneCode)->get();
 
-        return back()->with('coupneInfo', $coupneInfo);
+            $category=Category::all();
+        $subCategory=sub_categorie::all();
+        if (!Session::has('cart')) {
+            return view('Cart/mycart')
+             ->with('category',$category)
+            ->with('subCategory',$subCategory);
+        }
+
+        $category=Category::all();
+        $subCategory=sub_categorie::all();
+        $oldcart= Session::get('cart');
+        $cart= new Cart($oldcart);
+        return view('Cart/applyCoupne', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
+
+    ->with('category',$category)
+    ->with('subCategory',$subCategory)
+    ->with('coupneInfo', $coupneInfos);
 }
     
     

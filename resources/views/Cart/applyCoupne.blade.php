@@ -68,7 +68,31 @@
                                     <tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>TOTAL</th>
-                                        <th colspan="2" class="total">${{$totalPrice}}.00
+                                        <th colspan="2" class="total">
+                                           @if($coupneInfo->isEmpty()) 
+                                        <h6 style="color: black; font-size: 10px;">{{'Invalite Coupne'}}<h6><br>
+                                           ${{$totalPrice}}.00 
+
+                                           @else
+                                           
+                                        @foreach($coupneInfo as $coupneInfos)
+
+                                        @if($coupneInfos->status==1)
+
+                                        @if($coupneInfos->type==1)
+
+                                        ${{$totalPrice+$coupneInfos->price}}.00
+
+                                        @else
+                                        
+                                        ${{($totalPrice*$coupneInfos->price)/100 +$totalPrice}}.00
+
+                                        @endif
+
+                                        @endif
+
+                                        @endforeach
+                                         @endif            
                                         </th>
                                         <th></th>
                                     </tr>
