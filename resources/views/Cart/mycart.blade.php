@@ -98,7 +98,7 @@
                                             <div class="modal-dialog">
                                             
                                               <!-- Modal content-->
-                                              <div class="container">
+                                              
                                               <div class="modal-content">
                                                 <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -121,6 +121,7 @@
         <div class="form-group">
                 <label class="control-label">Country:-</label>
                 <select name="country" class="form-control">
+                    <option disabled>Select Country</option>
                     <option value="NP">Nepal</option>
                     <option value="IN">India</option>
                     <option value="CH">China</option>
@@ -130,6 +131,7 @@
          <div class="form-group">
                 <label class="control-label">Provision:-</label>
                 <select name="state" class="form-control">
+                    <option disabled>Select Provision</option>
                     <option value="St1">State 1 </option>
                     <option value="St2">State 2 </option>
                     <option value="St3">State 3 </option>
@@ -140,13 +142,17 @@
            <div class="form-group">
                 <label class="control-label">City:-</label>
                 <select name="city" class="form-control">
+                    <option disabled="">Select City</option>
                     <option value="Bi">Biratnager  </option>
                     <option value="Ka">Kathamndu  </option>
                     <option value="Po">Pokahar  </option>
                     <option value="Kh">Khandbari  </option>
                 </select>
         </div>     
-                                                      </div>
+        <div class="form-group">
+                <label class="control-label">Zip</label>
+                <input type="text"  name="name" class="form-control" placeholder="Enter Zip code">
+        </div>                                              </div>
                                                   </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -156,7 +162,7 @@
                                               
                                             </div>
                                           </div>
-                                      </div>
+                                     
                                           <!-- Model End Hear -->
                                     
                                     </tr>
