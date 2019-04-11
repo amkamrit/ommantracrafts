@@ -4,7 +4,8 @@
 <title>OMMANTRA</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Online Store">
+<meta charset="utf-8" name="keyword" content="Manufacturer, wholesaler and exporter of nepali handicraft metal items, malas, beads">
+<meta name="description" content="handicraft: singing bowl, Buddhist ritual, jewelry ">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{asset('asset/bootstrap4/bootstrap.min.css')}}">
 <link href="{{asset('asset/fonts/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
@@ -45,7 +46,7 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<meta name="google-site-verification" content="2yUnM3i1nUff8z0eUaeJyIHz6F9NuL9V7O1M7ZOjuIs" />
+<meta name="google-site-verification" content="4PYky0gSkxvfiD8k1IOlrncJOV2SNB01h3i3sGesKrw" />
 <!--End of Tawk.to Script-->
  <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129496918-1"></script>

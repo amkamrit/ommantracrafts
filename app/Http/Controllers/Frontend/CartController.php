@@ -132,22 +132,24 @@ class CartController extends Controller
         //Total price calculation Start hear 
        if ($coupneInfo->isEmpty()) {
 
-           $totalPrice =$cart->totalPrice;
+           // $coupneMessages ="Coupne not found . please try another Coupne";
        }
        else{
         foreach ($coupneInfo as $coupneInfos) {
             if ($coupneInfos->status==1) {
                 if ($coupneInfos->type==1) {
-                    $totalPrice=$cart->totalPrice+$coupneInfos->price;
+                    $coupneAmount=$coupneInfos->price;
                 }
                 else{
-                    $totalPrice=(($cart->totalPrice*$coupneInfos->price)/100) +$cart->totalPrice;
+                    $coupneAmount=(($cart->totalPrice*$coupneInfos->price)/100);
                 }
             }
+            Session::put('coupneAmount', $coupneAmount);
         }
 
        }
-    	return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $totalPrice])
+       
+    	return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
 
     ->with('category',$category)
     ->with('subCategory',$subCategory);
@@ -410,6 +412,9 @@ class CartController extends Controller
     ->with('subCategory',$subCategory)
     ->with('coupneInfo', $coupneInfos);
 }
-    
+ public function coupneRemove(){
+    session()->forget('coupneAmount');
+    return back();
+ }   
     
 }

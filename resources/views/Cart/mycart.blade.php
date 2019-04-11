@@ -5,6 +5,9 @@
 
 @section('content')
 @if(Session::has('cart'))
+<div class="alert alert-warning" role="alert">
+  </div>
+
     <div class="container">
         <section class="m50 row ">
         <div class="col-md-12">
@@ -52,10 +55,120 @@
                                     <tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>SUBTOTAL</th>
-                                        <th colspan="2" class="sub-total">${{$totalPrice}}.00</th>
+                                        <th colspan="2" class="sub-total">${{$totalPrice}}</th>
                                         <th></th>
                                     </tr>
                                     <tr>
+                                        @if(Session::get('coupneAmount'))
+
+                                        <form action="{{route('coupneRemove')}}" method="post">
+                                             
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <th class="empty" colspan="3"></th>
+                                        <th>Coupne</th>
+                                        <td colspan="2">
+                                            <input type="hidden" name="delete" value="delete">
+                                            ${{Session::get('coupneAmount')}}
+                                        </td>
+                                        <td colspan="2">
+
+                                            <button type="submit" class=" btn btn-danger btn-sm">Remove</button></td>
+                                            
+                                    </form>
+                                    </tr>
+                                    @endif
+                                     <tr>
+                                        <th class="empty" colspan="3"></th>
+                                        <th>Tax(13%)</th>
+                                        <th colspan="2" class="total">
+                                            ${{$totalPrice}}
+                                        </th>
+                                        <th></th>
+                                        <tr>
+                                     
+                                             
+                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <th class="empty" colspan="3"></th>
+                                        <th>Shipping Address</th>
+                                        <td colspan="2">
+                                            <input type="text" name="coupne"></td>
+                                        <td colspan="2"><button class=" btn btn-primary" data-toggle="modal" data-target="#shipping">Add</button></td>
+                                         <!-- Modal -->
+                                          <div class="modal fade" id="shipping" role="dialog">
+                                            <div class="modal-dialog">
+                                            
+                                              <!-- Modal content-->
+                                              <div class="container">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                  
+                                                </div>
+                                                <div class="modal-body">
+                                                  <div class="row">
+                                                      <div class="col-sm-6">
+        <div class="form-group">
+                <label class="control-label">Name</label>
+                <input type="text"  name="name" class="form-control" placeholder="Enter Your  Name">
+        </div>
+
+        <div class="form-group">
+                <label class="control-label">Number</label>
+                <input type="text"  name="name" class="form-control" placeholder="Enter Contact Number">
+        </div>
+                                                      </div>
+                                                      <div class="col-sm-6">
+        <div class="form-group">
+                <label class="control-label">Country:-</label>
+                <select name="country" class="form-control">
+                    <option value="NP">Nepal</option>
+                    <option value="IN">India</option>
+                    <option value="CH">China</option>
+                </select>
+        </div> 
+
+         <div class="form-group">
+                <label class="control-label">Provision:-</label>
+                <select name="state" class="form-control">
+                    <option value="St1">State 1 </option>
+                    <option value="St2">State 2 </option>
+                    <option value="St3">State 3 </option>
+                    <option value="St4">State 4 </option>
+                </select>
+        </div>  
+
+           <div class="form-group">
+                <label class="control-label">City:-</label>
+                <select name="city" class="form-control">
+                    <option value="Bi">Biratnager  </option>
+                    <option value="Ka">Kathamndu  </option>
+                    <option value="Po">Pokahar  </option>
+                    <option value="Kh">Khandbari  </option>
+                </select>
+        </div>     
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                                                </div>
+                                              </div>
+                                              
+                                            </div>
+                                          </div>
+                                      </div>
+                                          <!-- Model End Hear -->
+                                    
+                                    </tr>
+                                        <th class="empty" colspan="3"></th>
+                                        <th>TOTAL</th>
+                                        <th colspan="2" class="total">
+                                            ${{$totalPrice}}
+                                        </th>
+                                        <th></th>
+                                        <tr>
+                                        @if(empty(Session::get('coupneAmount')))
+
                                         <form action="{{route('shopping_cart')}}" method="post">
                                              
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -66,13 +179,7 @@
                                         <td colspan="2"><button class=" btn btn-primary">Apply</button></td>
                                     </form>
                                     </tr>
-                                    <tr>
-                                        <th class="empty" colspan="3"></th>
-                                        <th>TOTAL</th>
-                                        <th colspan="2" class="total">
-                                            ${{$totalPrice}}.00
-                                        </th>
-                                        <th></th>
+                                    @endif
                                     </tr>
                                 </tfoot>
                             </table>
@@ -83,9 +190,6 @@
                             </div>
                             
                             </div>
-                           <!--  <div align="center">
-                                <a href="{{route('checkout')}}"  class="primary-btn btn-primary" type="button" style="margin:  30px;">Checkout</a>
-                            </div> -->
                         </div>
 
                     </div>

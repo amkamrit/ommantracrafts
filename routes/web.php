@@ -147,6 +147,11 @@ Route::post('/shopping_cart',[
 	'as'    =>		'shopping_cart'
 ]);
 
+Route::post('/coupneRemove',[
+	'uses'   =>  'Frontend\CartController@coupneRemove',
+	'as'    =>		'coupneRemove'
+]);
+
 Route::get('/checkout/{totalPrice}',[
 	'uses'   =>  'Frontend\CartController@getCheckout',
 	'as'    =>		'checkout',
