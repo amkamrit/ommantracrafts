@@ -201,4 +201,11 @@ Route::get('login/facebook/callback', 'Auth\CustomerLoginController@handleProvid
 Route::get('login/twitter', 'Auth\CustomerLoginController@redirectToProviders');
 Route::get('login/twitter/callback', 'Auth\CustomerLoginController@handleProviderCallbacks');
 
+//Import Shipping Address
+
+Route::get('export', 'Admins\shippingAddressController@export')->name('export');
+
+Route::get('importExportView', 'Admins\shippingAddressController@importExportView');
+
+Route::post('import', 'Admins\shippingAddressController@import')->name('import');
 

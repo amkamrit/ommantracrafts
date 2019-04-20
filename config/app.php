@@ -180,7 +180,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class
+        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         
 
     ],
@@ -235,7 +236,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
 
     ],
