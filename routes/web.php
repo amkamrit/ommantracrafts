@@ -209,4 +209,5 @@ Route::get('importExportView', 'Admins\shippingAddressController@importExportVie
 
 Route::post('import', 'Admins\shippingAddressController@import')->name('import');
 Route::post('importprice', 'Admins\shippingAddressController@importprice')->name('importprice');
+Route::get('shippingPriceView/{$id}', 'Admins\shippingAddressController@displayprice')->name('shippingPriceView');
 
