@@ -110,6 +110,12 @@
                         <p style="font-size: 30; color: green">Coupne</p>
                     </a>
                 </li>
+                <li>
+                    <a href="{{url('shippingAddress')}}">
+                        <i class="  fa fa-image" style="font-size: 30px; color: red"></i>
+                        <p style="font-size: 30; color: green">Address</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

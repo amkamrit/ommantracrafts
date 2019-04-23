@@ -183,6 +183,7 @@ return [
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         
+        
 
     ],
 

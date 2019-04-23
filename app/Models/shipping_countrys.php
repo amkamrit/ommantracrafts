@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class shipping_address extends Model
+class shipping_countrys extends Model
 {
        /**
 
@@ -20,7 +20,7 @@ class shipping_address extends Model
 
     {
 
-        return new User([
+        return new shipping_countrys([
 
             'country'     => $row[0],
 

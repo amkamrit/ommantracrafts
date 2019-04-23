@@ -202,10 +202,11 @@ Route::get('login/twitter', 'Auth\CustomerLoginController@redirectToProviders');
 Route::get('login/twitter/callback', 'Auth\CustomerLoginController@handleProviderCallbacks');
 
 //Import Shipping Address
-
+Route::get('shippingAddress', 'Admins\shippingAddressController@index')->name('shippingAddress');
 Route::get('export', 'Admins\shippingAddressController@export')->name('export');
 
 Route::get('importExportView', 'Admins\shippingAddressController@importExportView');
 
 Route::post('import', 'Admins\shippingAddressController@import')->name('import');
+Route::post('importprice', 'Admins\shippingAddressController@importprice')->name('importprice');
 
