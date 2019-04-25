@@ -120,43 +120,35 @@ public function importprice(Request $request)
 
         }
 
- 
-
         return view('admins.shippingAddress.index')->with('success', 'Insert Record successfully.');
 
     }
     public function displayprice($id){
-        $zoneCode=0;
-    if ($id==1) {
-        $zoneCode="zone1";
-    }
-    elseif ($id==2) {
-        $zoneCode="zone2";
-    }
-     elseif ($id==3) {
-        $zoneCode="zone3";
-    }
-     elseif ($id==4) {
-        $zoneCode="zone4";
-    }
-     elseif ($id==5) {
-        $zoneCode="zone5";
-    }
-     elseif ($id==6) {
-        $zoneCode="zone6";
-    }
-     elseif ($id==7) {
-        $zoneCode="zone7";
-    }
-    else{
+        $zoneid=$id;
 
-        $zoneCode="zone8";
-    }
-    $data = Gallery::where('user_id', $userId)->paginate(10);
-        $data = DB::table('shipping_countrys')->paginate(15);
+        $data = DB::table('shipping_prices')->paginate(15);
 
-        return view('admins.shippingAddress.view')->with('data', $data);
+        return view('admins.shippingAddress.view')
+        ->with('zoneid', $zoneid)
+        ->with('data', $data);
     }
+    public function countryEdit($id) {
+        $country =shipping_countrys::find($id);
+        return view('admins.shippingAddress.countryEdit')->with('country', $country);
+    }   
 
-    
+     public function countryupdate(Request $request ,$id) {
+        $updateCountry= shipping_countrys::find($id);
+        $updateCountry->country=$request->country;
+        $updateCountry->zone=$request->zone;
+
+       $data = DB::table('shipping_countrys')->paginate(15);
+
+        return view('admins.shippingAddress.index')->with('data', $data);
+    } 
+
+       public function ShippingPriceEdit($id) {
+        $countryPrice =ShippingPrice::find($id);
+        return view('admins.shippingAddress.ShippingPriceEdit')->with('countryPrice', $countryPrice);
+    } 
 }

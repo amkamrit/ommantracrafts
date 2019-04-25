@@ -27,7 +27,7 @@
 			</div>	
 		</form>
 	</div>
-</div>
+</div><br>
 <div class="row">
 	<table class="table">
 		<thead style="background-color: red">
@@ -35,7 +35,7 @@
 			<td>SN</td>
 			<td>Country</td>
 			<td>Zone</td>
-			<td>Price</td>
+			<th>Detail</th>
 			<td>Action</td>
 		</th>
 		</thead>
@@ -43,7 +43,7 @@
 		<tbody>
 			
 		<th>
-			<td>{{$datas->sn}}</td>
+			<td>{{$datas->id}}</td>
 			<td>{{$datas->country}}</td>
 			<td>
 				@if($datas->zone==1)
@@ -64,8 +64,8 @@
 				Zone 8
 				@endif
 			</td>
-			<td><a href="{{route('shippingPriceView',$datas->zone)}}" class="btn btn-info">View</a></td>
-			<td><button class="btn btn-success">Edit</button> <button class="btn btn-danger">Delete</button></td>
+			<td><a href="{{route('shippingPriceView',$datas->zone)}}" class="btn btn-info">View Detail</a></td>
+			<td><a href="{{route('countryEdit', $datas->id)}}" class="btn btn-success">Edit</a> <a class="btn btn-danger" disabled>Delete</a></td>
 		</th>
 		
 		</tbody>

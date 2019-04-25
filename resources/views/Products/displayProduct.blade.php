@@ -20,7 +20,7 @@
                                 ?>
 
                             <li><a href="#">
-                                <img src="{{$url}}" alt="img01" style="width: 450px; height: 300px" >{{$singleCategoryproducts->product_name}}
+                                <img src="{{$url}}" alt="img01"  >{{$singleCategoryproducts->product_name}}
                             </a></li>
 
                             @endforeach
@@ -33,7 +33,7 @@
                             
                                 ?>
 
-                                <img src="{{$url}}" alt="img05" style="width: 450px; height: 300px">{{$singleCategoryproducts->product_name}}
+                                <img src="{{$url}}" alt="img05">{{$singleCategoryproducts->product_name}}
                             </a></li>
                             @endforeach
                             

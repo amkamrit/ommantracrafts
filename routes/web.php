@@ -209,5 +209,8 @@ Route::get('importExportView', 'Admins\shippingAddressController@importExportVie
 
 Route::post('import', 'Admins\shippingAddressController@import')->name('import');
 Route::post('importprice', 'Admins\shippingAddressController@importprice')->name('importprice');
-Route::get('shippingPriceView/{$id}', 'Admins\shippingAddressController@displayprice')->name('shippingPriceView');
+Route::get('shippingPriceView/{id}', 'Admins\shippingAddressController@displayprice')->name('shippingPriceView');
+Route::get('countryEdit/{id}', 'Admins\shippingAddressController@countryEdit')->name('countryEdit');
+Route::post('countryupdate/{id}', 'Admins\shippingAddressController@countryupdate')->name('countryupdate');
+Route::get('ShippingPriceEdit/{id}', 'Admins\shippingAddressController@ShippingPriceEdit')->name('ShippingPriceEdit');
 

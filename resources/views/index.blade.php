@@ -736,14 +736,14 @@
                         </div>
                     </section>
                     </div>
-                    
+                
                     <div class="col-md-6 col-sm-6 col-lg-12">
                         <section class="newproduct bgwhite p-b-105">
                         <div class="row">
                             <div class="single-sidebar-widget ads-widget">
                                 <?php $url=url('galleryImage/'.'Banner_Fourth.gif'); 
                                 ?>
-                                <img class="img-fluid" src="{{$url}}" alt="">
+                                <img style="padding-top: 10px;" class="img-fluid" src="{{$url}}" alt="">
                             </div>
                         </div>
                     </section>
