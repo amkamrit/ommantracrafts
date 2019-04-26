@@ -77,23 +77,28 @@
                                     </form>
                                     </tr>
                                     @endif
-                                     <tr>
-                                        <th class="empty" colspan="3"></th>
-                                        <th>Tax(13%)</th>
-                                        <th colspan="2" class="total">
-                                            ${{$totalPrice}}
-                                        </th>
-                                        <th></th>
+
                                         <tr>
                                      
                                              
                                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <th class="empty" colspan="3"></th>
-                                        <th>Shipping Address</th>
+                                        <th>Shipping Charge</th>
                                         <td colspan="2">
-                                            <input type="text" name="coupne"></td>
-                                        <td colspan="2"><button class=" btn btn-primary" data-toggle="modal" data-target="#shipping">Add</button></td>
+                                        @if(empty(Session::get('shippingAddressPrice')))
+                                           Select Shipping Address
+                                           
+                                           @else
+                                           ${{Session::get('shippingAddressPrice')}}
+                                           @endif
+                                        </td>
+                                        <td colspan="2">
+                                            @if(empty(Session::get('shippingAddressPrice')))
+                                            <button class=" btn btn-primary" data-toggle="modal" data-target="#shipping">Add</button>
+                                            @endif
+                                        </td>
                                          <!-- Modal -->
+                                         
                                           <div class="modal fade" id="shipping" role="dialog">
                                             <div class="modal-dialog">
                                             
@@ -107,6 +112,8 @@
                                                 <div class="modal-body">
                                                   <div class="row">
                                                       <div class="col-sm-6">
+        <form action="{{route('cartShippingAddress')}}" method="post">
+             {{ csrf_field() }}
         <div class="form-group">
                 <label class="control-label">Name</label>
                 <input type="text"  name="name" class="form-control" placeholder="Enter Your  Name">
@@ -116,38 +123,27 @@
                 <label class="control-label">Number</label>
                 <input type="text"  name="name" class="form-control" placeholder="Enter Contact Number">
         </div>
-                                                      </div>
-                                                      <div class="col-sm-6">
+        </div>
+         <div class="col-sm-6">
         <div class="form-group">
                 <label class="control-label">Country:-</label>
                 <select name="country" class="form-control">
                     <option disabled>Select Country</option>
-                    <option value="NP">Nepal</option>
-                    <option value="IN">India</option>
-                    <option value="CH">China</option>
+                    @foreach($shipping_countrys as $shipping_country)
+                    <option value="{{$shipping_country->country}}">{{$shipping_country->country}}</option>
+
+                    @endforeach
                 </select>
         </div> 
 
          <div class="form-group">
                 <label class="control-label">Provision:-</label>
-                <select name="state" class="form-control">
-                    <option disabled>Select Provision</option>
-                    <option value="St1">State 1 </option>
-                    <option value="St2">State 2 </option>
-                    <option value="St3">State 3 </option>
-                    <option value="St4">State 4 </option>
-                </select>
+                <input type="text" name="Provision" class="form-control">
         </div>  
 
            <div class="form-group">
                 <label class="control-label">City:-</label>
-                <select name="city" class="form-control">
-                    <option disabled="">Select City</option>
-                    <option value="Bi">Biratnager  </option>
-                    <option value="Ka">Kathamndu  </option>
-                    <option value="Po">Pokahar  </option>
-                    <option value="Kh">Khandbari  </option>
-                </select>
+                <input type="text" name="City" class="form-control">
         </div>     
         <div class="form-group">
                 <label class="control-label">Zip</label>
@@ -156,7 +152,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                                                  <button href="" type="submit" class="btn btn-default">Save</button>
                                                 </div>
                                               </div>
                                               
@@ -164,14 +160,26 @@
                                           </div>
                                      
                                           <!-- Model End Hear -->
-                                    
+                                    </form>
                                     </tr>
                                         <th class="empty" colspan="3"></th>
                                         <th>TOTAL</th>
                                         <th colspan="2" class="total">
+                        @if(empty(Session::get('coupneAmount') && Session::get('shippingAddressPrice')))
                                             ${{$totalPrice}}
+                        @elseif(empty(Session::get('coupneAmount')) && Session::get('shippingAddressPrice'))
+
+                                        ${{$totalPrice}}
+                        @elseif(Session::get('coupneAmount') && empty(Session::get('shippingAddressPrice')))
+
+                                        ${{$totalPrice}}
+
+                        @else
+                                    ${{$totalPrice+Session::get('shippingAddressPrice')+Session::get('coupneAmount')}}
+                        @endif
+
                                         </th>
-                                        <th></th>
+                                        <th>*include 13% tax </th>
                                         <tr>
                                         @if(empty(Session::get('coupneAmount')))
 

@@ -22,7 +22,9 @@ use App\Models\Service;
 use App\Models\Payment;
 use App\Models\Coupne;
 use App\Models\shipping_address;
-
+use App\Models\shipping_countrys;
+use App\Models\ShippingPrice;
+use Redirect;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use Srmklive\PayPal\Services\AdaptivePayments;
 
@@ -46,6 +48,46 @@ class CartController extends Controller
     	$cart=new Cart($oldCart);
     	$cart->add($products, $products->id);
     	$request->Session()->put('cart',$cart);
+        //Calculation of Shipping Price
+        if (empty(Session::get('shippingAddressPrice'))) {
+            
+        }
+        else{
+            $ZoneId=Session::get('zoneId')
+            session()->forget('shippingAddressPrice');
+
+            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+
+    $shippingPrice=null;
+
+    if ($ZoneId==1) {
+        $shippingPrice=$shippingPrices->zone1;
+    }
+    elseif ($ZoneId==2) {
+        $shippingPrice=$shippingPrices->zone2;
+    }
+     elseif ($ZoneId==3) {
+        $shippingPrice=$shippingPrices->zone3;
+    }
+     elseif ($ZoneId==4) {
+        $shippingPrice=$shippingPrices->zone4;
+    }
+     elseif ($ZoneId==5) {
+        $shippingPrice=$shippingPrices->zone5;
+    }
+     elseif ($ZoneId==6) {
+        $shippingPrice=$shippingPrices->zone6;
+    }
+     elseif ($ZoneId==7) {
+        $shippingPrice=$shippingPrices->zone7;
+    }
+    else {
+        $shippingPrice=$shippingPrices->zone8;
+    }
+ Session::put('shippingAddressPrice', $shippingPrice);
+   }
+
+        
     	return back()
 
     ->with('product',$product)
@@ -79,6 +121,44 @@ class CartController extends Controller
             Session::forget('cart', $cart);
 
         }
+                //Calculation of Shipping Price
+        if (empty(Session::get('shippingAddressPrice'))) {
+            
+        }
+        else{
+            $ZoneId=Session::get('zoneId')
+            session()->forget('shippingAddressPrice');
+
+            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+
+    $shippingPrice=null;
+
+    if ($ZoneId==1) {
+        $shippingPrice=$shippingPrices->zone1;
+    }
+    elseif ($ZoneId==2) {
+        $shippingPrice=$shippingPrices->zone2;
+    }
+     elseif ($ZoneId==3) {
+        $shippingPrice=$shippingPrices->zone3;
+    }
+     elseif ($ZoneId==4) {
+        $shippingPrice=$shippingPrices->zone4;
+    }
+     elseif ($ZoneId==5) {
+        $shippingPrice=$shippingPrices->zone5;
+    }
+     elseif ($ZoneId==6) {
+        $shippingPrice=$shippingPrices->zone6;
+    }
+     elseif ($ZoneId==7) {
+        $shippingPrice=$shippingPrices->zone7;
+    }
+    else {
+        $shippingPrice=$shippingPrices->zone8;
+    }
+ Session::put('shippingAddressPrice', $shippingPrice);
+   }
         return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
 
     ->with('category',$category)
@@ -106,6 +186,44 @@ class CartController extends Controller
             Session::forget('cart', $cart);
 
         }
+                //Calculation of Shipping Price
+        if (empty(Session::get('shippingAddressPrice'))) {
+            
+        }
+        else{
+            $ZoneId=Session::get('zoneId')
+            session()->forget('shippingAddressPrice');
+
+            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+
+    $shippingPrice=null;
+
+    if ($ZoneId==1) {
+        $shippingPrice=$shippingPrices->zone1;
+    }
+    elseif ($ZoneId==2) {
+        $shippingPrice=$shippingPrices->zone2;
+    }
+     elseif ($ZoneId==3) {
+        $shippingPrice=$shippingPrices->zone3;
+    }
+     elseif ($ZoneId==4) {
+        $shippingPrice=$shippingPrices->zone4;
+    }
+     elseif ($ZoneId==5) {
+        $shippingPrice=$shippingPrices->zone5;
+    }
+     elseif ($ZoneId==6) {
+        $shippingPrice=$shippingPrices->zone6;
+    }
+     elseif ($ZoneId==7) {
+        $shippingPrice=$shippingPrices->zone7;
+    }
+    else {
+        $shippingPrice=$shippingPrices->zone8;
+    }
+ Session::put('shippingAddressPrice', $shippingPrice);
+   }
         return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
          ->with('category',$category)
         ->with('subCategory',$subCategory);
@@ -117,6 +235,8 @@ class CartController extends Controller
         $coupneInfo = DB::table('coupnes')->where('name', $coupneCode)->get();
     	$category=Category::all();
         $subCategory=sub_categorie::all();
+        $ShippingPrice=ShippingPrice::all();
+        $shipping_countrys=shipping_countrys::all();
     	if (!Session::has('cart')) {
     		return view('Cart/mycart')
     		 ->with('category',$category)
@@ -129,7 +249,7 @@ class CartController extends Controller
     	$cart= new Cart($oldcart);
         $totalPrice=0;
        
-        //Total price calculation Start hear 
+        //Coupne price calculation Start hear 
        if ($coupneInfo->isEmpty()) {
 
            // $coupneMessages ="Coupne not found . please try another Coupne";
@@ -152,6 +272,8 @@ class CartController extends Controller
     	return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
 
     ->with('category',$category)
+    ->with('ShippingPrice', $ShippingPrice)
+    ->with('shipping_countrys', $shipping_countrys)
     ->with('subCategory',$subCategory);
     }
 
@@ -416,5 +538,42 @@ class CartController extends Controller
     session()->forget('coupneAmount');
     return back();
  }   
-    
+
+public function cartShippingAddress(Request $request){
+
+ $zoneId=DB::table('shipping_countrys')->where('country', $request->country)->first();
+
+ Session::put('zoneId', $zoneId);
+
+      $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+
+    $shippingPrice=null;
+
+    if ($zoneId->zone==1) {
+        $shippingPrice=$shippingPrices->zone1;
+    }
+    elseif ($zoneId->zone==2) {
+        $shippingPrice=$shippingPrices->zone2;
+    }
+     elseif ($zoneId->zone==3) {
+        $shippingPrice=$shippingPrices->zone3;
+    }
+     elseif ($zoneId->zone==4) {
+        $shippingPrice=$shippingPrices->zone4;
+    }
+     elseif ($zoneId->zone==5) {
+        $shippingPrice=$shippingPrices->zone5;
+    }
+     elseif ($zoneId->zone==6) {
+        $shippingPrice=$shippingPrices->zone6;
+    }
+     elseif ($zoneId->zone==7) {
+        $shippingPrice=$shippingPrices->zone7;
+    }
+    else {
+        $shippingPrice=$shippingPrices->zone8;
+    }
+ Session::put('shippingAddressPrice', $shippingPrice);
+    return Redirect::back();
+    }
 }
