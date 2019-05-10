@@ -21,7 +21,7 @@
 						  
 						  <div class="carousel-inner">
 						     <div class="carousel-item active ">
-                              <img class="d-block w-100" src="sliderImage/1546939032.jpg"  alt="First slide" style="height: 350px;">
+                              <img class="d-block w-100" src="sliderImage/1546939032.jpg"  alt="First slide">
                               <!-- <a href="" class="btn btn-success" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Buy Now</a> -->
 
                             </div>
@@ -30,7 +30,7 @@
                                 ?>
 
 						    <div class="carousel-item ">
-                              <a href="{{ asset('/subProduct/' .$sliders->sub_categories_id. '/' .$sliders->title)}}"><img class="d-block w-100" src="{{$url}}"  alt="Snow" style="height: 350px;"></a>
+                              <a href="{{ asset('/subProduct/' .$sliders->sub_categories_id. '/' .$sliders->title)}}"><img class="d-block w-100" src="{{$url}}"  alt="Snow"></a>
                                 <!-- <a href="{{ asset('/subProduct/' .$sliders->sub_categories_id)}}" class="btn btn-success" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%); font-size: 30px;">Buy Now</a> -->
 
                             </div>
@@ -613,7 +613,7 @@
                           
                           <div class="carousel-inner" style="padding-top: 50px;">
                              <div class="carousel-item active ">
-                              <img class="d-block w-100" src="sliderImage/1546939691.jpg"  alt="First slide" style="height: 350px;">
+                              <img class="d-block w-100" src="sliderImage/1546939691.jpg"  alt="First slide">
 
                             </div>
                             @foreach($sliderTwo as $sliderTwos)
@@ -621,7 +621,7 @@
                                 ?>
 
                             <div class="carousel-item ">
-                              <img class="d-block w-100" src="{{$url}}"  alt="First slide" style="height: 350px;">
+                              <img class="d-block w-100" src="{{$url}}"  alt="First slide">
 
                             </div>
                             @endforeach()

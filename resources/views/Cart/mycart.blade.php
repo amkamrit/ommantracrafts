@@ -23,6 +23,7 @@
                                         <th class="text-center">Price</th>
                                         <th class="text-center">Quantity</th>
                                         <th class="text-center">Total</th>
+                                        <th class="text-center">Weight</th>
                                         <th class="text-right"></th>
                                     </tr>
                                 </thead>
@@ -41,8 +42,12 @@
                                         </td>
                                         <td class="price text-center"><strong>{{$product['item']['product_normal_price']}}</strong><br></td>
 
-                                        <td class=" text-center"><input name="qty" class="qty input" type="number" value="{{$product['qty']}}" onkeypress="return event.charCode >= 48" min="{{$product['item']['product_minimum_sell_number']}}" required></td>
-                                        <td class="total text-center"><strong class="primary-color">{{$product['price']}}</strong></td>
+                                        <td class=" text-center"><input name="qty" class="qty input" type="number" value="{{$product['qty']}}" onkeypress="return event.charCode >= 48" min="{{$product['item']['product_minimum_sell_number']}}" required>
+                                        </td>
+                                        <td class="total text-center"><strong class="primary-color">{{$product['price']}}</strong>
+                                        </td>
+                                         <td class="total text-center"><strong class="primary-color">{{$product['weight']}}</strong>
+                                        </td>
                                         <td class="text-right"><a href="{{route('remove',['id'=> $product['item']['id']])}}" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
                                         <td class="text-right"><input type="submit" value="Update"></td>
 

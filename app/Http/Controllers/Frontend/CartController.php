@@ -53,10 +53,12 @@ class CartController extends Controller
             
         }
         else{
-            $ZoneId=Session::get('zoneId')
+            $ZoneId=Session::get('zoneId');
             session()->forget('shippingAddressPrice');
 
-            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+            $cart= Session::get('cart');
+            $weight=$cart->totalWeight;
+            $shippingPrices=DB::table('shipping_prices')->where('weight', $weight)->first();
 
     $shippingPrice=null;
 
@@ -107,6 +109,9 @@ class CartController extends Controller
         $products= Product::find($id);
         $category=Category::all();
         $subCategory=sub_categorie::all();
+
+        $ShippingPrice=ShippingPrice::all();
+        $shipping_countrys=shipping_countrys::all();
         $qty=$request->qty;
 
         $oldCart= Session::has('cart') ?  Session::get('cart') : null;
@@ -115,21 +120,17 @@ class CartController extends Controller
 
          if (count($cart->items)>0 ) {
             Session::put('cart', $cart);
-        }
-        else {
 
-            Session::forget('cart', $cart);
-
-        }
                 //Calculation of Shipping Price
         if (empty(Session::get('shippingAddressPrice'))) {
             
         }
         else{
-            $ZoneId=Session::get('zoneId')
+            $ZoneId=Session::get('zoneId');
             session()->forget('shippingAddressPrice');
-
-            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+            $cart= Session::get('cart');
+            $weight=$cart->totalWeight;
+       $shippingPrices=DB::table('shipping_prices')->where('weight', $weight)->first();
 
     $shippingPrice=null;
 
@@ -157,11 +158,19 @@ class CartController extends Controller
     else {
         $shippingPrice=$shippingPrices->zone8;
     }
- Session::put('shippingAddressPrice', $shippingPrice);
+        Session::put('shippingAddressPrice', $shippingPrice);
    }
+}
+     else {
+
+            Session::forget('cart', $cart);
+
+        }
         return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
 
     ->with('category',$category)
+    ->with('ShippingPrice', $ShippingPrice)
+    ->with('shipping_countrys', $shipping_countrys)
     ->with('subCategory',$subCategory);
 
 
@@ -180,21 +189,17 @@ class CartController extends Controller
         
         if (count($cart->items)>0 ) {
             Session::put('cart', $cart);
-        }
-        else {
 
-            Session::forget('cart', $cart);
-
-        }
                 //Calculation of Shipping Price
         if (empty(Session::get('shippingAddressPrice'))) {
             
         }
         else{
-            $ZoneId=Session::get('zoneId')
+            $ZoneId=Session::get('zoneId');
             session()->forget('shippingAddressPrice');
-
-            $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+            $cart= Session::get('cart');
+            $weight=$cart->totalWeight;
+             $shippingPrices=DB::table('shipping_prices')->where('weight', $weight)->first();
 
     $shippingPrice=null;
 
@@ -224,6 +229,12 @@ class CartController extends Controller
     }
  Session::put('shippingAddressPrice', $shippingPrice);
    }
+}
+           else {
+
+            Session::forget('cart', $cart);
+
+        }
         return view('Cart/mycart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice])
          ->with('category',$category)
         ->with('subCategory',$subCategory);
@@ -545,7 +556,9 @@ public function cartShippingAddress(Request $request){
 
  Session::put('zoneId', $zoneId);
 
-      $shippingPrices=DB::table('shipping_prices')->where('weight', 2)->first();
+           $cart= Session::get('cart');
+            $weight=$cart->totalWeight;
+       $shippingPrices=DB::table('shipping_prices')->where('weight', $weight)->first();
 
     $shippingPrice=null;
 
