@@ -78,7 +78,7 @@ s0.parentNode.insertBefore(s1,s0);
 	<div class="super_container">
 
 
-	
+	@include('layouts.front.headerFront')
 
 	@yield('content')
 

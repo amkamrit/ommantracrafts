@@ -1,7 +1,5 @@
 @extends('layouts.front.appFront')
 
-@include('layouts.front.headerFront')
-
 @section('content')
 
 @if(Session::has('error'))

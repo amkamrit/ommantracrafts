@@ -7,20 +7,20 @@
 <meta charset="utf-8" name="keyword" content="Manufacturer, wholesaler and exporter of nepali handicraft metal items, malas, beads">
 <meta name="description" content=" handicraft: singing bowl, Buddhist ritual, jewelry ">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{{asset('asset/bootstrap4/bootstrap.mincss')}}">
-<link href="{{asset('asset/fonts/fontawesome-free-5.0.1/css/fontawesome-allcss')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{asset('asset/bootstrap4/bootstrap.min.css')}}">
+<link href="{{asset('asset/fonts/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="{{asset('asset/fonts/elegant-font/html-css/stylecss')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('asset/styles/main_stylescss')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('asset/styles/responsivecss')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('asset/css/maincss')}}">
-<link rel="stylesheet" type="text/css" media="all" href="{{asset('asset/styles/owl.carouselcss')}}">
-<link rel="stylesheet" type="text/css" media="all" href="{{asset('asset/styles/owl.themecss')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('asset/DataTables/dataTables.bootstrap4.mincss')}}"/>
-<link rel="stylesheet" type="text/css" href="{{asset('asset/css/utilcss')}}">
-<link rel="stylesheet" href="{{asset('asset/css/smoothproductscss')}}">
-<link rel="stylesheet" href="{{asset('asset/css/baguetteBox.mincss')}}">
-<link href="{{asset('asset/ItemSlider/css/main-stylecss')}}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{asset('asset/fonts/elegant-font/html-css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('asset/styles/main_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('asset/styles/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('asset/css/main.css')}}">
+<link rel="stylesheet" type="text/css" media="all" href="{{asset('asset/styles/owl.carousel.css')}}">
+<link rel="stylesheet" type="text/css" media="all" href="{{asset('asset/styles/owl.theme.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('asset/DataTables/dataTables.bootstrap4.min.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{asset('asset/css/util.css')}}">
+<link rel="stylesheet" href="{{asset('asset/css/smoothproducts.css')}}">
+<link rel="stylesheet" href="{{asset('asset/css/baguetteBox.min.css')}}">
+<link href="{{asset('asset/ItemSlider/css/main-style.css')}}" rel="stylesheet" />
 
 <script src="https://js.stripe.com/v3/"></script>
 <style type="text/css">
