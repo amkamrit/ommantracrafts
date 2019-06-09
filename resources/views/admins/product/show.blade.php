@@ -80,6 +80,13 @@
 					<td>{{$product->slog}}</td>
 				</tc>
 			</tbody>
+
+			<tbody>
+				<tc>
+					<td> Youtube URL </td>
+					<td>{{$product->youtubeurl}}</td>
+				</tc>
+			</tbody>
 			<tbody>
 				<tc>
 					<td> Product Price </td>

@@ -214,4 +214,8 @@ Route::get('countryEdit/{id}', 'Admins\shippingAddressController@countryEdit')->
 Route::post('countryupdate/{id}', 'Admins\shippingAddressController@countryupdate')->name('countryupdate');
 Route::get('ShippingPriceEdit/{id}', 'Admins\shippingAddressController@ShippingPriceEdit')->name('ShippingPriceEdit');
 Route::post('cartShippingAddress', 'Frontend\CartController@cartShippingAddress')->name('cartShippingAddress');
+//Import Product 
+
+Route::post('importPrdouct', 'Admins\ProductController@importPrdouct')->name('importPrdouct');
+
 

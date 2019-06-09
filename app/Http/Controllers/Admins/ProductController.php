@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product =Product::all();
+        $product =DB::table('products')->paginate(8);
         return view('admins.product.index')->withproduct($product);
     }
 
@@ -64,6 +64,8 @@ class ProductController extends Controller
         $product->product_type = $request->product_type;
         $product->slog = $request->slog;
         $product->sell_option = $request->sell_option;
+        $product->youtubeurl = $request->youtubeurl;
+        
         // if ($request->hasFile('product_image')) {
         //     $file=$request->file('product_image');
         //     $file_name=time().'.'. $file->getClientOriginalExtension();
@@ -145,6 +147,7 @@ class ProductController extends Controller
         $product->product_type = $request->input('product_type');
         $product->slog = $request->input('slog');
         $product->sell_option = $request->input('sell_option');
+        $product->youtubeurl = $request->input('youtubeurl');
         if ($request->hasFile('product_image')) {
 
             $file=$request->file('product_image');
@@ -174,4 +177,38 @@ class ProductController extends Controller
         $product =Product::all();
         return view('admins.product.index')->withproduct($product);
     }
+    public function importPrdouct(Request $request){
+        {
+        $request->validate([
+
+            'fileprice' => 'required'
+
+        ]);
+
+        $path = $request->file('fileprice')->getRealPath();
+
+        $data = Excel::load($path)->get();
+
+ 
+
+        if($data->count()){
+
+            foreach ($data as $key => $value) {
+
+            $arr[] = ['product_name' => $value->product_name, 'categories_id' => $value->categories_id, 'sub_categories_id' => $value->sub_categories_id, 'weight' => $value->weight,'product_short_description' => $value->product_short_description, 'product_normal_price' => $value->product_normal_price, 'product_long_description' => $value->product_long_description, 'product_code' => $value->product_code, 'product_sell_price' => $value->product_sell_price, 'product_minimum_sell_number' => $value->product_minimum_sell_number, 'product_type' => $value->product_type, 'slog' => $value->slog, 'youtubeurl' => $value->youtubeurl, 'sell_option' => $value->sell_option];
+            }
+
+            if(!empty($arr)){
+
+                 ShippingPrice::insert($arr);
+
+            }
+
+        }
+
+        $product =Product::all();
+        return view('admins.product.index')->withproduct($product);
+
+    }
+}
 }

@@ -16,6 +16,7 @@
         "maatwebsite/excel": "~2.1.0",
         "renatomarinho/laravel-page-speed": "^1.8",
         "srmklive/paypal": "~1.0",
+        "cohensive/embed": "5.5.*",
         "stripe/stripe-php": "^6.15"
     },
     "require-dev": {

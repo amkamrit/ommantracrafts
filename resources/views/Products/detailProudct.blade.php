@@ -1,7 +1,5 @@
 @extends('layouts.front.appFrontSec')
 
-
-
 @section('content')
 
 
@@ -120,6 +118,9 @@
   <li class="nav-item">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Review</a>
   </li>
+    <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Audio/Video</a>
+  </li>
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -127,8 +128,14 @@
           <div class="advert_text">{!! $singleproduct->product_long_description !!}</div>
   </div>
   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="advert_title"><a href="#">Trends 2018</a></div>
-          <div class="advert_text">Lorem ipsum dolor sit amet, consectetur adipiscing Donec et.</div>
+        <div class="advert_title"><a href="#">Audio/Video</a></div>
+          <div class="advert_text">
+          <div class="embed-responsive embed-responsive-16by9" id="vid">
+           <iframe width="200" height="200"
+          src="https://www.youtube.com/embed/7GJFrCJaivY?autoplay=1">
+</iframe> 
+     </div>
+          </div>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <div class="well well-sm">

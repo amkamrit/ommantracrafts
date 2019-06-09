@@ -102,6 +102,14 @@
                 </label>
             </div>
 
+
+            <div class="form-row">
+                <label>
+                    <span>Youtube Url </span>
+                   {{Form::text('youtubeurl', null)}}
+                </label>
+            </div>
+
             <div class="form-row">
                 <label>
                     <span>Selling Option</span>
