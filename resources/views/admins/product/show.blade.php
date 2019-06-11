@@ -51,7 +51,7 @@
 			<tbody>
 				<tc>
 					<td>Product Long description </td>
-					<td>{{$product->product_long_description}}</td>
+					<td>{!!$product->product_long_description!!}</td>
 				</tc>
 			</tbody>
 			<tbody>

@@ -51,8 +51,16 @@
 
 			<tbody>
 				
-				<td><a href="{{route('subcategory.edit',$subcategory->id)}}" class="btn btn-primary a-btn-slide-text"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        <span><strong>Edit</strong></span> </a></td>
+				<td><a href="{{route('subcategory.edit',$subcategory->id)}}" class="btn btn-primary a-btn-slide-text" style="margin-bottom: 20px;"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <span><strong>Edit</strong></span> </a>
+
+						{!! Form::open(['route' => ['subcategory.destroy', $subcategory->id], 'method' => 'delete']) !!}
+
+						{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+
+						{!! Form::close() !!}
+
+    </td>
 			</tbody>
 
 			</tbody>

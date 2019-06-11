@@ -30,17 +30,17 @@
 					<td>
 
 
-							<a href="{{route('category.show',$Categorys->id)}}" style="margin: 10px;"  class="btn btn-primary a-btn-slide-text">  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							<a href="{{route('category.show',$Categorys->id)}}" style="margin: 10px;"  class="btn btn-success a-btn-slide-text">  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
         <span><strong>View</strong></span></a>
         <a href="{{route('category.edit',$Categorys->id)}}" class="btn btn-primary a-btn-slide-text"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         <span><strong>Edit</strong></span> </a>
 
 
-						{!! Form::open(['route' => ['category.destroy', $Categorys->id], 'method' => 'delete']) !!}
+<!-- 						{!! Form::open(['route' => ['category.destroy', $Categorys->id], 'method' => 'delete']) !!}
 
 						{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
 
-						{!! Form::close() !!}
+						{!! Form::close() !!} -->
 
 					</td>
 
@@ -49,7 +49,7 @@
 			</tbody>
 			
 		</table>
-		
+		{{$category->links()}}
 	</div>
 </div>
 

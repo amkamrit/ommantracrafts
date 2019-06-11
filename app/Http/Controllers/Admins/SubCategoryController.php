@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\sub_categorie;
 use Image;
 use App\Models\Category;
+use DB;
 
 class SubCategoryController extends Controller
 {
@@ -18,7 +19,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategory =sub_categorie::all();
+        // $subcategory =sub_categorie::all();
+        $subcategory=DB::table('sub_categories')->paginate(8);
         return view('admins.subcategory.index')->withsubcategory($subcategory);
     }
 
@@ -129,7 +131,7 @@ class SubCategoryController extends Controller
         
         $subcategory->delete();
 
-        $subcategory =sub_categorie::all();
+        $subcategory=DB::table('sub_categories')->paginate(8);
         return view('admins.subcategory.index')->withsubcategory($subcategory);
 
     }

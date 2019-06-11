@@ -38,7 +38,7 @@
 			<tbody>
 				<tc>
 					<td> Category Description </td>
-					<td>{{$category->category_description}}</td>
+					<td>{!!$category->category_description!!}</td>
 				</tc>
 			</tbody>
 			
@@ -46,11 +46,17 @@
 			<tbody>
 				
 				<td></a>
-        <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary a-btn-slide-text"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        <span><strong>Edit</strong></span> </a></td>
+        <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary a-btn-slide-text" style="margin-bottom: 20px"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <span><strong>Edit</strong></span> </a>
+        {!! Form::open(['route' => ['category.destroy', $category->id], 'method' => 'delete']) !!}
+
+			{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+
+			{!! Form::close() !!}
+    </td>
 			</tbody>
 
-			</tbody>
+			
 			
 		</table>
 		

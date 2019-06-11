@@ -174,7 +174,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        $product =Product::all();
+        $product =DB::table('products')->paginate(8);
         return view('admins.product.index')->withproduct($product);
     }
     public function importPrdouct(Request $request){

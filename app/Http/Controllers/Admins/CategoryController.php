@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Image;
-
+use DB;
 
 class CategoryController extends Controller
 {
     public function index(){
-
-    	$category = Category::all();
+        $category=DB::table('categories')->paginate(8);
+    	// $category = Category::all();
 
     	return view('admins.category.index')->with('category', $category);
     }
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $categorys->save();
 
         // redirect with flash data to posts.show
-        $category = Category::all();
+        $category=DB::table('categories')->paginate(8);
         return view('admins.category.index')->with('category',$category);
          //return redirect()->route('category.index',$category->id);
     }
@@ -75,8 +75,7 @@ class CategoryController extends Controller
 
         $categorys->delete();
 
-        $category = Category::all();
-
+       $category=DB::table('categories')->paginate(8);
         return view('admins.category.index')->with('category', $category);
     }
 }

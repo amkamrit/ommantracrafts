@@ -31,17 +31,17 @@
 
 
 
-						<a href="{{route('subcategory.show',$subcategorys->id)}}" style="margin: 10px;"  class="btn btn-primary a-btn-slide-text">  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+						<a href="{{route('subcategory.show',$subcategorys->id)}}" style="margin: 10px;"  class="btn btn-success a-btn-slide-text">  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
         <span><strong>View</strong></span></a>
         <a href="{{route('subcategory.edit',$subcategorys->id)}}" class="btn btn-primary a-btn-slide-text"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         <span><strong>Edit</strong></span> </a>
 
 
-						{!! Form::open(['route' => ['subcategory.destroy', $subcategorys->id], 'method' => 'delete']) !!}
+<!-- 						{!! Form::open(['route' => ['subcategory.destroy', $subcategorys->id], 'method' => 'delete']) !!}
 
 						{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
 
-						{!! Form::close() !!}
+						{!! Form::close() !!} -->
 
 
 					</td>
@@ -51,7 +51,7 @@
 			</tbody>
 			
 		</table>
-		
+		{{$subcategory->links()}}
 	</div>
 </div>
 
